@@ -1,47 +1,15 @@
 import React from 'react';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {StatusBar} from 'react-native';
+import MianStack from './navigation/navigation';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <MaterialCommunityIcons
-        name="clipboard-list-outline"
-        color="black"
-        size={215}
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar hidden={true} />
+      <MianStack />
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    flex: 1,
-  },
-});
 
 export default App;
