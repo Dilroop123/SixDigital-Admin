@@ -1,7 +1,4 @@
-
-
 import React from 'react';
-
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -23,8 +20,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-
-
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -34,20 +29,19 @@ const App = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-   <MaterialCommunityIcons
-                name="clipboard-list-outline"
-                color='black'
-                size={215}
-              />
+      <MaterialCommunityIcons
+        name="clipboard-list-outline"
+        color="black"
+        size={215}
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    flex:1
+    flex: 1,
   },
-
 });
 
 export default App;
