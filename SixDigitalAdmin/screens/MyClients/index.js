@@ -9,7 +9,7 @@ const MyClients = ({navigation}) => {
   return (
     <View style={styles.container}>
       <DrawerHeader />
-      <ClientList />
+      <ClientList onPress={() => navigation.navigate('ClientProfile')} />
     </View>
   );
 };

@@ -17,7 +17,9 @@ import {SCREEN_WIDTH, SCREEN_HEIGHT} from '../style/fontSize';
 import AppHeader from '../components/AppHeader';
 
 import MyClients from '../screens/MyClients';
+import ClientProfile from '../screens/ClientProfile';
 import ServiceRequest from '../screens/ServiceRequest';
+import CreateProject from '../screens/CreateProject';
 
 const Stack = createStackNavigator();
 const TabTop = createMaterialTopTabNavigator();
@@ -33,14 +35,9 @@ function HomeStack() {
       screenOptions={{
         headerShown: false,
       }}>
-      {/* <Stack.Screen name="MainHome" component={Home} />
-      <Stack.Screen name="MyProjectDetail" component={MyProjectDetail} />
-      <Stack.Screen name="MyOffers" component={MyOffers} />
-      <Stack.Screen
-        name="PopularServiceDescription"
-        options={({route}) => ({title: route.params.screenTitle})}
-        component={PopularServiceDescription}
-      /> */}
+      <Stack.Screen name="MyClients" component={MyClients} />
+      <Stack.Screen name="ClientProfile" component={ClientProfile} />
+      <Stack.Screen name="CreateProject" component={CreateProject} />
     </Stack.Navigator>
   );
 }
@@ -48,8 +45,8 @@ function MyDrawer() {
   return (
     <Drawer.Navigator initialRouteName="MyClients">
       <Drawer.Screen
-        name="MyClients"
-        component={MyClients}
+        name="HomeStack"
+        component={HomeStack}
         options={{drawerLabel: 'MyClients'}}
       />
       <Drawer.Screen

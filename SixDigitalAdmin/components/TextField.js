@@ -15,17 +15,18 @@ const TextField = ({
 }) => {
   return (
     <View style={{flex: flex, ...style}}>
-      <Text style={{color: color.primary}}>{label}</Text>
+      <Text style={{color: 'gray'}}>{label}</Text>
       <TextInput
         secureTextEntry={secureTextEntry}
         value={value}
         onChangeText={onChangeText}
         style={{
           height: SCREEN_HEIGHT * 0.06,
-          borderRadius: SCREEN_HEIGHT * 0.01,
-          borderColor: color.lightGrey,
-          borderWidth: 1,
+          borderRadius: SCREEN_HEIGHT * 0.03,
+          backgroundColor: color.white,
           fontSize: SCREEN_HEIGHT * 0.02,
+          paddingLeft: SCREEN_HEIGHT * 0.02,
+          marginTop: SCREEN_HEIGHT * 0.01,
         }}
         underlineColorAndroid="transparent"
       />

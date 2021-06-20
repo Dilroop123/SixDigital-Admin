@@ -10,7 +10,7 @@ const ClientProfile = ({navigation}) => {
   return (
     <View style={styles.container}>
       <DrawerHeader />
-      <Profile />
+      <Profile onPress={() => navigation.navigate('CreateProject')} />
     </View>
   );
 };

@@ -81,12 +81,9 @@ const DATA = [
   },
 ];
 
-const ClientList = ({navigation, headercomponet, footerComponent, onPress}) => {
+const ClientList = ({onPress}) => {
   const _renderItem = ({item: service}) => (
-    <Pressable
-      style={styles.profileService}
-      //  onPress={() => onPress(navigation.navigate('ClientProfile'))}
-    >
+    <Pressable style={styles.profileService} onPress={onPress}>
       <Image
         source={require('../../../assets/guest.png')}
         style={{height: SCREEN_HEIGHT * 0.12, width: SCREEN_WIDTH * 0.24}}
@@ -154,8 +151,6 @@ const ClientList = ({navigation, headercomponet, footerComponent, onPress}) => {
         keyExtractor={item => item.id}
         numColumns={2}
         showsVerticalScrollIndicator={false}
-        ListHeaderComponent={headercomponet}
-        ListFooterComponent={footerComponent}
       />
     </View>
   );
