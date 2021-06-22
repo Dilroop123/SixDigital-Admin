@@ -7,8 +7,9 @@ import AppHeader from '../../components/AppHeader';
 import RequestForm from './components/RequestForm';
 import * as ServiceAction from '../../store/actions/ServiceAction';
 
-const CreateProject = ({navigation}) => {
+const CreateProject = ({navigation, route}) => {
   const dispatch = useDispatch();
+  const {userId} = route.params;
   const serviceData = useSelector(state => state.service.ServiceData);
 
   React.useEffect(() => {
@@ -19,7 +20,7 @@ const CreateProject = ({navigation}) => {
   return (
     <View style={styles.container}>
       <AppHeader />
-      <RequestForm serviceData={serviceData?.data} />
+      <RequestForm serviceData={serviceData?.data} userId={userId} />
     </View>
   );
 };

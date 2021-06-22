@@ -16,12 +16,15 @@ const Card = ({title, onPress}) => (
   </Pressable>
 );
 
-const Profile = ({navigation, headercomponet, footerComponent, onPress}) => {
+const Profile = ({client, onPress}) => {
   return (
     <View style={styles.container}>
-      <ProfileCard />
+      <ProfileCard client={client} />
       <View style={{flexDirection: 'row'}}>
-        <Card title="Create Project" onPress={onPress} />
+        <Card
+          title="Create Project"
+          onPress={() => onPress('CreateProject', client?._id)}
+        />
         <Card title="My Projects" />
         <Card title="Create Offer" />
       </View>

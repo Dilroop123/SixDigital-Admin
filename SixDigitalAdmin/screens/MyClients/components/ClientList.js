@@ -81,15 +81,15 @@ const DATA = [
   },
 ];
 
-const ClientList = ({onPress}) => {
-  const _renderItem = ({item: service}) => (
-    <Pressable style={styles.profileService} onPress={onPress}>
+const ClientList = ({onPress, usersData}) => {
+  const _renderItem = ({item: client}) => (
+    <Pressable style={styles.profileService} onPress={() => onPress(client)}>
       <Image
-        source={require('../../../assets/guest.png')}
-        style={{height: SCREEN_HEIGHT * 0.12, width: SCREEN_WIDTH * 0.24}}
+        source={require('../../../assets/account.png')}
+        style={{height: SCREEN_HEIGHT * 0.1, width: SCREEN_HEIGHT * 0.1}}
       />
       <Text style={{color: color.primary, fontSize: 16, fontWeight: 'bold'}}>
-        Phranks
+        {client?.first_name}
       </Text>
       <Text
         style={{
@@ -97,14 +97,16 @@ const ClientList = ({onPress}) => {
           fontSize: 12,
           marginVertical: SCREEN_HEIGHT * 0.01,
         }}>
-        Jessusgibbs@hotmail.com
+        {client?.email}
       </Text>
-      <TouchableWithoutFeedback>
-        <View style={[styles.btn, {backgroundColor: color.successText}]}>
-          <FontAwesome name="phone" style={styles.btnIcon} />
-          <Text style={styles.btnText}>Contact</Text>
-        </View>
-      </TouchableWithoutFeedback>
+      {!!client?.phone && (
+        <TouchableWithoutFeedback>
+          <View style={[styles.btn, {backgroundColor: color.successText}]}>
+            <FontAwesome name="phone" style={styles.btnIcon} />
+            <Text style={styles.btnText}>Contact</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      )}
     </Pressable>
   );
 
@@ -146,9 +148,9 @@ const ClientList = ({onPress}) => {
       </View>
 
       <FlatList
-        data={DATA}
+        data={usersData}
         renderItem={_renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
         numColumns={2}
         showsVerticalScrollIndicator={false}
       />

@@ -9,7 +9,7 @@ import globalStyles from '../../../style/globalStyles';
 import color from '../../../style/color';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 
-const ProjectCard = ({navigation}) => {
+const ProjectCard = ({projectName, charges}) => {
   return (
     <View
       style={{
@@ -44,29 +44,22 @@ const ProjectCard = ({navigation}) => {
             fontWeight: 'bold',
             textTransform: 'capitalize',
           }}>
-          Video Shoot
+          {projectName}
         </Text>
         <Text
           style={{
             color: color.grey,
             fontSize: 12,
           }}>
-          A time-lapse app or a camera is one of the best tools for creating
-          videos. ...
+          Description will be taken from timeline..
         </Text>
-        <Pressable>
-          <View
-            style={{
-              backgroundColor: color.successText,
-              marginVertical: SCREEN_HEIGHT * 0.01,
-              marginHorizontal: SCREEN_WIDTH * 0.08,
-              padding: SCREEN_HEIGHT * 0.003,
-              width: SCREEN_WIDTH * 0.25,
-              borderRadius: normalize(4),
-            }}>
-            <Text style={{color: color.white, textAlign: 'center'}}>Call</Text>
-          </View>
-        </Pressable>
+
+        <Text style={{color: color.grey, fontSize: 14}}>
+          from{' '}
+          <Text style={{color: color.purple, fontWeight: 'bold'}}>
+            &#x24; {charges}
+          </Text>
+        </Text>
       </View>
     </View>
   );

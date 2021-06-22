@@ -47,7 +47,7 @@ export function Dropdown({
             justifyContent: 'space-between',
             flexDirection: 'row',
           }}>
-          <Text>{selectedItem ? selectedItem?.text : 'Select service..'}</Text>
+          <Text>{selectedItem ? selectedItem?.text : placeholder}</Text>
         </Pressable>
       </View>
 

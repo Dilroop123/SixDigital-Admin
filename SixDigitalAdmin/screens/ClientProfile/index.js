@@ -6,11 +6,15 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 import DrawerHeader from '../../components/DrawerHeader';
 import Profile from './components/Profile';
 
-const ClientProfile = ({navigation}) => {
+const ClientProfile = ({navigation, route}) => {
+  const {client} = route.params;
   return (
     <View style={styles.container}>
       <DrawerHeader />
-      <Profile onPress={() => navigation.navigate('CreateProject')} />
+      <Profile
+        client={client}
+        onPress={(screen, userId) => navigation.navigate(screen, {userId})}
+      />
     </View>
   );
 };

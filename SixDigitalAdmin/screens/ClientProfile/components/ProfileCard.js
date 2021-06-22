@@ -10,7 +10,7 @@ import globalStyles from '../../../style/globalStyles';
 import color from '../../../style/color';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 
-const ProfileCard = () => {
+const ProfileCard = ({client}) => {
   return (
     <View
       style={{
@@ -31,7 +31,7 @@ const ProfileCard = () => {
             width: SCREEN_HEIGHT * 0.1,
             borderRadius: normalize(50),
           }}
-          source={require('../../../assets/guest.png')}
+          source={require('../../../assets/account.png')}
         />
       </View>
       <View
@@ -48,7 +48,7 @@ const ProfileCard = () => {
             fontWeight: 'bold',
             textTransform: 'capitalize',
           }}>
-          Jesus Gillobs
+          {client?.first_name}
         </Text>
         <Text
           style={{
@@ -57,7 +57,7 @@ const ProfileCard = () => {
             flex: 1,
             marginVertical: SCREEN_HEIGHT * 0.008,
           }}>
-          Jessusgibbs@hotmail.com
+          {client?.email}
         </Text>
       </View>
       <View
