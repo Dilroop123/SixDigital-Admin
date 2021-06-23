@@ -9,7 +9,7 @@ import globalStyles from '../../../style/globalStyles';
 import color from '../../../style/color';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 
-const ProjectCard = ({projectName, charges}) => {
+const ProjectCard = ({projectName, charges, image}) => {
   return (
     <View
       style={{
@@ -27,7 +27,7 @@ const ProjectCard = ({projectName, charges}) => {
             height: SCREEN_HEIGHT * 0.12,
             width: SCREEN_HEIGHT * 0.15,
           }}
-          source={require('../../../assets/myproject.png')}
+          source={{uri: image}}
         />
       </View>
       <View

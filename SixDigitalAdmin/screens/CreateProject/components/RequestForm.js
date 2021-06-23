@@ -78,7 +78,14 @@ const RequestForm = ({serviceData, userId}) => {
       // enabled={enableShift}
       style={styles.container}>
       <View>
-        <ProjectCard projectName={projectName} charges={charges} />
+        <View style={{marginTop: SCREEN_HEIGHT * 0.01}}>
+          <ProjectCard
+            projectName={projectName}
+            charges={charges}
+            image={imageResource?.uri}
+          />
+        </View>
+
         <Text style={styles.pageTitle}>Create a Project</Text>
 
         <View style={styles.requestServiceContainer}>
@@ -154,7 +161,6 @@ export default RequestForm;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: SCREEN_WIDTH * 0.05,
   },
   pageTitle: {
     fontWeight: 'bold',
