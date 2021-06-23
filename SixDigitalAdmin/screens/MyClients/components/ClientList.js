@@ -18,69 +18,6 @@ import SearchBar from '../../../components/SearchBar';
 import color from '../../../style/color';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 
-const DATA = [
-  {
-    id: '1',
-    title: 'RUSTY DRIVE',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '2',
-    title: 'SABOR MORENO',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '3',
-    title: '0 MESTRE PUB',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '4',
-    title: 'GRILL 54 CHEF',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '5',
-    title: 'RUSTY DRIVE',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '6',
-    title: 'SABOR MORENO',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '7',
-    title: 'RUSTY DRIVE',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '8',
-    title: 'SABOR MORENO',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '9',
-    title: 'RUSTY DRIVE',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-  {
-    id: '10',
-    title: 'SABOR MORENO',
-    image:
-      'https://res.cloudinary.com/demo/image/upload/w_260,h_200,c_crop,g_north/sample.jpg',
-  },
-];
-
 const ClientList = ({onPress, usersData}) => {
   const _renderItem = ({item: client}) => (
     <Pressable style={styles.profileService} onPress={() => onPress(client)}>
@@ -129,7 +66,7 @@ const ClientList = ({onPress, usersData}) => {
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-start',
           marginHorizontal: SCREEN_WIDTH * 0.025,
           marginVertical: SCREEN_HEIGHT * 0.025,
         }}>
@@ -137,12 +74,6 @@ const ClientList = ({onPress, usersData}) => {
           <View style={[styles.btn, {backgroundColor: color.grey}]}>
             <FontAwesome name="trash-o" style={styles.btnIcon} />
             <Text style={styles.btnText}>Delete Client</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback>
-          <View style={[styles.btn, {backgroundColor: color.primary}]}>
-            <FontAwesome name="plus-circle" style={styles.btnIcon} />
-            <Text style={styles.btnText}>Add Client</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>

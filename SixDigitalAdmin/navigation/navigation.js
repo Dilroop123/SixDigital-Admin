@@ -20,6 +20,7 @@ import MyClients from '../screens/MyClients';
 import ClientProfile from '../screens/ClientProfile';
 import ServiceRequest from '../screens/ServiceRequest';
 import CreateProject from '../screens/CreateProject';
+import MyProjects from '../screens/My Projects';
 
 const Stack = createStackNavigator();
 const TabTop = createMaterialTopTabNavigator();
@@ -38,6 +39,7 @@ function HomeStack() {
       <Stack.Screen name="MyClients" component={MyClients} />
       <Stack.Screen name="ClientProfile" component={ClientProfile} />
       <Stack.Screen name="CreateProject" component={CreateProject} />
+      <Stack.Screen name="MyProjects" component={MyProjects} />
     </Stack.Navigator>
   );
 }

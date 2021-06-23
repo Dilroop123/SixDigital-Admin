@@ -8,7 +8,6 @@ import {
   Text,
   View,
   KeyboardAvoidingView,
-  ScrollView,
 } from 'react-native';
 import {normalize} from 'react-native-elements';
 import Ionicons from 'react-native-vector-icons/Ionicons';

@@ -25,7 +25,10 @@ const Profile = ({client, onPress}) => {
           title="Create Project"
           onPress={() => onPress('CreateProject', client?._id)}
         />
-        <Card title="My Projects" />
+        <Card
+          title="My Projects"
+          onPress={() => onPress('MyProjects', client?._id)}
+        />
         <Card title="Create Offer" />
       </View>
       <View style={{flexDirection: 'row'}}>
