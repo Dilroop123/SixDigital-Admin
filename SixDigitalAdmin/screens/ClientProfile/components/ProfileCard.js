@@ -17,7 +17,6 @@ const ProfileCard = ({client}) => {
         flexDirection: 'row',
         backgroundColor: color.white,
         marginTop: SCREEN_HEIGHT * 0.001,
-        marginHorizontal: SCREEN_HEIGHT * 0.02,
         padding: SCREEN_HEIGHT * 0.02,
         marginBottom: SCREEN_HEIGHT * 0.05,
         alignItems: 'center',
@@ -44,7 +43,7 @@ const ProfileCard = ({client}) => {
         <Text
           style={{
             color: color.primary,
-            fontSize: 16,
+            fontSize: SCREEN_HEIGHT * 0.02,
             fontWeight: 'bold',
             textTransform: 'capitalize',
           }}>
@@ -53,8 +52,8 @@ const ProfileCard = ({client}) => {
         <Text
           style={{
             color: color.grey,
-            fontSize: 12,
-            flex: 1,
+            fontSize: SCREEN_HEIGHT * 0.015,
+
             marginVertical: SCREEN_HEIGHT * 0.008,
           }}>
           {client?.email}

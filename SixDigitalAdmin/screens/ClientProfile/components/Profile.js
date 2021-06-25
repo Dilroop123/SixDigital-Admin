@@ -29,12 +29,24 @@ const Profile = ({client, onPress}) => {
           title="My Projects"
           onPress={() => onPress('MyProjects', client?._id)}
         />
-        <Card title="Create Offer" />
+        <Card
+          title="Create Offer"
+          onPress={() => onPress('Offer', client?._id)}
+        />
       </View>
       <View style={{flexDirection: 'row'}}>
-        <Card title="Credentials" />
-        <Card title="Files/Reports" />
-        <Card title="Invoices" />
+        <Card
+          title="Credentials"
+          onPress={() => onPress('Credentials', client?._id)}
+        />
+        <Card
+          title="Files/Reports"
+          onPress={() => onPress('File', client?._id)}
+        />
+        <Card
+          title="Invoices"
+          onPress={() => onPress('Invoice', client?._id)}
+        />
       </View>
     </View>
   );
@@ -45,8 +57,6 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: SCREEN_HEIGHT * 0.03,
-    paddingHorizontal: SCREEN_WIDTH * 0.05,
   },
   profileService: {
     justifyContent: 'center',

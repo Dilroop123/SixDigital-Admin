@@ -26,9 +26,9 @@ const ProjectList = ({projectData, onPress}) => {
         </View>
         <View style={{marginHorizontal: '3%', flex: 1}}>
           <Text style={styles.profTitle}>{project?.name}</Text>
-          {/* <Text style={styles.profDesc}>
+          <Text style={styles.profDesc}>
             {project?.timeline[project?.timeline?.length - 1]?.description}
-          </Text> */}
+          </Text>
           <View style={{flexDirection: 'row', marginTop: '2%'}}>
             <Text style={{color: color.purple, fontSize: 14, flex: 1}}>
               Status :{' '}

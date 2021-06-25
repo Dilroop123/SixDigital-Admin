@@ -69,6 +69,7 @@ const RequestForm = ({serviceData, userId}) => {
         status,
       ),
     );
+    // onpress()
   };
 
   return (
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: color.primary,
     marginVertical: SCREEN_HEIGHT * 0.015,
-    fontSize: 20,
+    fontSize: SCREEN_HEIGHT * 0.02,
   },
   requestServiceContainer: {
     backgroundColor: color.lightBlue,

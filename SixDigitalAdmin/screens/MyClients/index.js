@@ -1,6 +1,6 @@
 import React from 'react';
-
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {DrawerActions} from '@react-navigation/native';
+import {StyleSheet, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import * as UserAction from '../../store/actions/UserAction';
 import color from '../../style/color';
@@ -18,7 +18,9 @@ const MyClients = ({navigation}) => {
   }, [dispatch, navigation]);
   return (
     <View style={styles.container}>
-      <DrawerHeader />
+      <DrawerHeader
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+      />
       <ClientList
         onPress={client => navigation.navigate('ClientProfile', {client})}
         usersData={usersData?.data}

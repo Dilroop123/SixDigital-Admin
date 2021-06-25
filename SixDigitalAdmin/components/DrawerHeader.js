@@ -5,22 +5,30 @@ import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../style/fontSize';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import color from '../style/color';
 
-const DrawerHeader = ({navigation}) => {
+const DrawerHeader = ({navigation, onPress, onNotificationPress}) => {
   return (
     <View style={styles.headerContainer}>
-      <View>
-        <Pressable>
-          <MaterialIcons name="menu" style={styles.backIcon} />
-        </Pressable>
-      </View>
+      {!!onPress && (
+        <View>
+          <Pressable onPress={onPress}>
+            <MaterialIcons name="menu" style={styles.backIcon} />
+          </Pressable>
+        </View>
+      )}
+
       <View>
         <Text style={styles.headerText}>6 DIGITAL</Text>
       </View>
-      <View>
-        <Pressable>
-          <MaterialIcons name="notifications" style={styles.notificationIcon} />
-        </Pressable>
-      </View>
+      {!!onNotificationPress && (
+        <View>
+          <Pressable>
+            <MaterialIcons
+              name="notifications"
+              style={styles.notificationIcon}
+            />
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 };
@@ -31,7 +39,6 @@ const styles = StyleSheet.create({
     marginTop: SCREEN_HEIGHT * 0.04,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between'
   },
   headerText: {
     fontWeight: 'bold',
@@ -40,17 +47,16 @@ const styles = StyleSheet.create({
     fontSize: SCREEN_HEIGHT * 0.035,
   },
   backIcon: {
-    fontSize: 26,
-    fontWeight:'bold',
+    fontSize: SCREEN_HEIGHT * 0.04,
+    fontWeight: 'bold',
     color: color.primary,
-    marginHorizontal: SCREEN_WIDTH * 0.03,
     width: SCREEN_WIDTH * 0.3,
   },
-  notificationIcon:{
+  notificationIcon: {
     fontSize: 30,
     color: color.primary,
     marginHorizontal: SCREEN_WIDTH * 0.03,
     width: SCREEN_WIDTH * 0.5,
-    marginLeft:SCREEN_WIDTH * 0.2
-  }
+    marginLeft: SCREEN_WIDTH * 0.2,
+  },
 });

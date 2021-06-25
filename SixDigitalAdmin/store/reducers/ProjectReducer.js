@@ -1,4 +1,4 @@
-import {SET_PROJECTS} from '../actions/ProjectAction';
+import {SET_PROJECTS, CREATE_TASK} from '../actions/ProjectAction';
 const initialState = {
   ProjectData: [],
 };
@@ -6,6 +6,11 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_PROJECTS:
+      return {
+        ...state,
+        ProjectData: action.projectData,
+      };
+    case CREATE_TASK:
       return {
         ...state,
       };
