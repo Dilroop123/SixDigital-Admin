@@ -9,23 +9,32 @@ import {
   Image,
   Text,
   View,
+  Linking
 } from 'react-native';
-import {normalize} from 'react-native-elements';
+import { normalize } from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import globalStyles from '../../../style/globalStyles';
 import SearchBar from '../../../components/SearchBar';
 import color from '../../../style/color';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style/fontSize';
 
-const ClientList = ({onPress, usersData}) => {
-  const _renderItem = ({item: client}) => (
+const ClientList = ({ onPress, usersData }) => {
+
+  const onPresshandler = (number) => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
+    else { phoneNumber = `telprompt:${number}`; }
+    Linking.openURL(phoneNumber);
+  }
+
+  const _renderItem = ({ item: client }) => (
     <Pressable style={styles.profileService} onPress={() => onPress(client)}>
       <Image
         source={require('../../../assets/account.png')}
-        style={{height: SCREEN_HEIGHT * 0.1, width: SCREEN_HEIGHT * 0.1}}
+        style={{ height: SCREEN_HEIGHT * 0.1, width: SCREEN_HEIGHT * 0.1 }}
       />
-      <Text style={{color: color.primary, fontSize: 16, fontWeight: 'bold'}}>
+      <Text style={{ color: color.primary, fontSize: 16, fontWeight: 'bold' }}>
         {client?.first_name}
       </Text>
       <Text
@@ -37,12 +46,12 @@ const ClientList = ({onPress, usersData}) => {
         {client?.email}
       </Text>
       {!!client?.phone && (
-        <TouchableWithoutFeedback>
-          <View style={[styles.btn, {backgroundColor: color.successText}]}>
+        <Pressable onPress={() => onPresshandler(client?.phone)}>
+          <View style={[styles.btn, { backgroundColor: color.successText }]}>
             <FontAwesome name="phone" style={styles.btnIcon} />
-            <Text style={styles.btnText}>Contact</Text>
+            <Text style={styles.btnText} >Contact</Text>
           </View>
-        </TouchableWithoutFeedback>
+        </Pressable>
       )}
     </Pressable>
   );
@@ -71,7 +80,7 @@ const ClientList = ({onPress, usersData}) => {
           marginVertical: SCREEN_HEIGHT * 0.025,
         }}>
         <TouchableWithoutFeedback>
-          <View style={[styles.btn, {backgroundColor: color.grey}]}>
+          <View style={[styles.btn, { backgroundColor: color.grey }]}>
             <FontAwesome name="trash-o" style={styles.btnIcon} />
             <Text style={styles.btnText}>Delete Client</Text>
           </View>

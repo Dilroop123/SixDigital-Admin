@@ -1,16 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import normalize from 'react-native-normalize';
 import ProjectDetailContext from '../context/ProjectDetailContext';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import color from '../style/color';
 import Upload from '../screens/File/Upload';
 import Recieved from '../screens/File/Recieved';
-import {SCREEN_WIDTH, SCREEN_HEIGHT} from '../style/fontSize';
+import { SCREEN_WIDTH, SCREEN_HEIGHT } from '../style/fontSize';
 
 import AppHeader from '../components/AppHeader';
 
@@ -34,7 +34,7 @@ const Stack = createStackNavigator();
 const TabTop = createMaterialTopTabNavigator();
 const Drawer = createDrawerNavigator();
 
-function MyProjectDetail({route, navigation}) {
+function MyProjectDetail({ route, navigation }) {
   const contextValue = {
     project: route.params.project,
     usedId: route.params.userId,
@@ -56,8 +56,8 @@ function MyProjectDetail({route, navigation}) {
             backgroundColor: color.lightBlue,
             height: '100%',
           },
-          labelStyle: {fontSize: SCREEN_HEIGHT * 0.018, fontWeight: 'bold'},
-          style: {backgroundColor: '#fff'},
+          labelStyle: { fontSize: SCREEN_HEIGHT * 0.018, fontWeight: 'bold' },
+          style: { backgroundColor: '#fff' },
         }}>
         <TabTop.Screen name="Home" component={Timeline} />
         <TabTop.Screen name="Chat" component={Chat} />
@@ -66,10 +66,10 @@ function MyProjectDetail({route, navigation}) {
   );
 }
 
-function File({route}) {
+function File({ route }) {
   return (
     <FileContext.Provider value={route.params.userId}>
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <AppHeader
           style={{
             backgroundColor: color.lightBlue,
@@ -84,8 +84,8 @@ function File({route}) {
               backgroundColor: color.lightBlue,
               height: '100%',
             },
-            labelStyle: {fontSize: SCREEN_HEIGHT * 0.018, fontWeight: 'bold'},
-            style: {backgroundColor: '#fff'},
+            labelStyle: { fontSize: SCREEN_HEIGHT * 0.018, fontWeight: 'bold' },
+            style: { backgroundColor: '#fff' },
           }}>
           <TabTop.Screen name="Upload" component={Upload} />
           <TabTop.Screen name="Recieved" component={Recieved} />
@@ -95,7 +95,7 @@ function File({route}) {
   );
 }
 
-function Offer({route, navigation}) {
+function Offer({ route, navigation }) {
   return (
     <OfferContext.Provider value={route.params.userId}>
       <AppHeader
@@ -113,11 +113,11 @@ function Offer({route, navigation}) {
             backgroundColor: color.lightBlue,
             height: '100%',
           },
-          labelStyle: {fontSize: SCREEN_HEIGHT * 0.018, fontWeight: 'bold'},
-          style: {backgroundColor: '#fff'},
+          labelStyle: { fontSize: SCREEN_HEIGHT * 0.018, fontWeight: 'bold' },
+          style: { backgroundColor: '#fff' },
         }}>
-        <TabTop.Screen name="CreateOffer" component={CreateOffer} />
-        <TabTop.Screen name="ViewOffer" component={ViewOffer} />
+        <TabTop.Screen name="Create Offer" component={CreateOffer} />
+        <TabTop.Screen name="View Offer" component={ViewOffer} />
       </TabTop.Navigator>
     </OfferContext.Provider>
   );
@@ -160,17 +160,17 @@ function MyDrawer() {
       <Drawer.Screen
         name="HomeStack"
         component={HomeStack}
-        options={{drawerLabel: 'My Clients'}}
+        options={{ drawerLabel: 'My Clients' }}
       />
       <Drawer.Screen
         name="OurServices"
         component={ServiceStack}
-        options={{drawerLabel: 'Our Services'}}
+        options={{ drawerLabel: 'Our Services' }}
       />
       <Drawer.Screen
         name="ServiceRequest"
         component={ServiceRequest}
-        options={{drawerLabel: 'Service Request'}}
+        options={{ drawerLabel: 'Service Request' }}
       />
     </Drawer.Navigator>
   );

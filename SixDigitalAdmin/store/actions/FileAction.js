@@ -69,7 +69,6 @@ export const getFiles = user_id => {
     });
 
     const resData = await response.json();
-
     dispatch({
       type: SET_FILE,
       fileData: resData,

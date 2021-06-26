@@ -1,16 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 
-import {Image, Text, View} from 'react-native';
-import {normalize} from 'react-native-elements';
+import { Image, Text, View, Linking } from 'react-native';
+import { normalize } from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import globalStyles from '../../../style/globalStyles';
 
 import color from '../../../style/color';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style/fontSize';
 
-const ProfileCard = ({client}) => {
+const ProfileCard = ({ client }) => {
+
+  const onPresshandler = (number) => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
+    else { phoneNumber = `telprompt:${number}`; }
+    Linking.openURL(phoneNumber);
+  }
+
+
   return (
     <View
       style={{
@@ -23,7 +32,7 @@ const ProfileCard = ({client}) => {
         borderRadius: normalize(10),
         ...globalStyles.shadow,
       }}>
-      <View style={{flex: 0.7}}>
+      <View style={{ flex: 0.7 }}>
         <Image
           style={{
             height: SCREEN_HEIGHT * 0.1,
@@ -39,7 +48,7 @@ const ProfileCard = ({client}) => {
           marginHorizontal: SCREEN_WIDTH * 0.05,
         }}
       />
-      <View style={{flex: 2, marginVertical: SCREEN_HEIGHT * 0.02}}>
+      <View style={{ flex: 2, marginVertical: SCREEN_HEIGHT * 0.02 }}>
         <Text
           style={{
             color: color.primary,
@@ -66,8 +75,9 @@ const ProfileCard = ({client}) => {
           padding: SCREEN_HEIGHT * 0.003,
         }}>
         <FontAwesome
+          onPress={() => onPresshandler(client?.phone)}
           name="volume-control-phone"
-          style={{color: color.white, fontSize: 18}}
+          style={{ color: color.white, fontSize: 18 }}
         />
       </View>
     </View>

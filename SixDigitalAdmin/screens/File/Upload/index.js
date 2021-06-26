@@ -10,7 +10,7 @@ import {
   FlatList,
 } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as FileAction from '../../../store/actions/FileAction';
 import Toast from '../../../components/Toast';
 import color from '../../../style/color';
@@ -21,12 +21,11 @@ import FileContext from '../../../context/FileContext';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const Upload = ({navigation}) => {
+const Upload = ({ navigation }) => {
   const [isShowToast, setIsShowToast] = React.useState(false);
   const fileDAta = useSelector(state => state.file.FileData);
   const dispatch = useDispatch();
   const userId = React.useContext(FileContext);
-
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       //  setLoader(true);  check in voozoo
@@ -52,7 +51,7 @@ const Upload = ({navigation}) => {
 
       await dispatch(
         FileAction.sendFile(
-          '60cba181b565373c8128e8e8',
+          userId,
           res,
           'This is the test',
           'adminUploaded',
@@ -68,13 +67,13 @@ const Upload = ({navigation}) => {
     }
   };
 
-  const _renderItem = ({item: document}) => <FileItem document={document} />;
+  const _renderItem = ({ item: document }) => <FileItem document={document} />;
 
   return (
     <View style={styles.container}>
       {isShowToast && <Toast message="upload success" />}
 
-      <Text style={{color: 'gray'}}>
+      <Text style={{ color: 'gray' }}>
         Upload your documents you want to share with us
       </Text>
 
@@ -99,8 +98,8 @@ const Upload = ({navigation}) => {
         renderItem={_renderItem}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item._id}
-        contentContainerStyle={{marginTop: SCREEN_HEIGHT * 0.05}}
-        ListFooterComponent={<View style={{height: SCREEN_HEIGHT * 0.3}} />}
+        contentContainerStyle={{ marginTop: SCREEN_HEIGHT * 0.05 }}
+        ListFooterComponent={<View style={{ height: SCREEN_HEIGHT * 0.3 }} />}
       />
     </View>
   );
