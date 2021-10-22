@@ -4,6 +4,7 @@ import {
   CREATE_INVOICE,
   UPDATE_INVOICE,
   SET_INVOICE,
+  DELETE_INVOICE,
 } from '../actions/FileAction';
 const initialState = {
   FileData: [],
@@ -24,7 +25,11 @@ export default (state = initialState, action) => {
     case CREATE_INVOICE:
       return {
         ...state,
-        FileData: action.fileData,
+      };
+
+    case DELETE_INVOICE:
+      return {
+        ...state,
       };
     case UPDATE_INVOICE:
       return {

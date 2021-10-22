@@ -3,6 +3,7 @@ export const SET_FILE = 'SET_FILE';
 export const SET_INVOICE = 'SET_INVOICE';
 export const CREATE_INVOICE = 'CREATE_INVOICE';
 export const UPDATE_INVOICE = 'UPDATE_INVOICE';
+export const DELETE_INVOICE = 'DELETE_INVOICE';
 
 import baseUrl from '../../style/baseUrl';
 
@@ -30,28 +31,33 @@ export const sendFile = (user_id, image, name, send_type) => {
   };
 };
 
-export const createInvoice = (user_id, image, name) => {
-  console.log(user_id);
-  console.log(image);
-  console.log(name);
+export const createInvoice = (
+  user_id,
+  services,
+  invoice_date,
+  due_date,
+  status,
+) => {
   return async dispatch => {
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('user_id', user_id);
-    formData.append('image', image);
     const response = await fetch(baseUrl.url + 'api/v1/invoices', {
       method: 'POST',
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
-      body: formData,
+      body: JSON.stringify({
+        user_id,
+        services,
+        invoice_date,
+        due_date,
+        status,
+      }),
     });
 
     const resData = await response.json();
-    // console.log(resData);
+
     dispatch({
       type: CREATE_INVOICE,
-      homeData: resData,
+      projectData: resData,
     });
   };
 };
@@ -97,9 +103,31 @@ export const getInvoice = user_id => {
   };
 };
 
-export const updateInvoiceStatus = invoice_id => {
+export const updateInvoiceStatus = (invoice_id, status) => {
   return async dispatch => {
     const response = await fetch(baseUrl.url + 'api/v1/invoices/paid', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        invoice_id,
+        status,
+      }),
+    });
+
+    const resData = await response.json();
+
+    dispatch({
+      type: UPDATE_INVOICE,
+      invoiceData: resData,
+    });
+  };
+};
+
+export const deleteInvoice = invoice_id => {
+  return async dispatch => {
+    const response = await fetch(baseUrl.url + 'api/v1/invoices/delete', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -112,8 +140,8 @@ export const updateInvoiceStatus = invoice_id => {
     const resData = await response.json();
 
     dispatch({
-      type: UPDATE_INVOICE,
-      invoiceData: resData,
+      type: DELETE_INVOICE,
+      offerData: resData,
     });
   };
 };

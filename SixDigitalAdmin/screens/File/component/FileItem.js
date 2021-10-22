@@ -109,12 +109,11 @@ const FileItem = ({document}) => {
               res.path(),
               file?.image?.mimeType || 'application/pdf',
             );
-            console.log('File downloaded');
           }
-          console.log('The file saved to ', res.data);
+          //   Toast.show('File downloaded.', Toast.LONG);
         })
         .catch(e => {
-          console.log('The file saved to ERROR', e.message);
+          // Toast.show(e.message, Toast.LONG);
         });
     }
   };

@@ -2,39 +2,55 @@
 import React from 'react';
 
 import {
-  TouchableWithoutFeedback,
   Pressable,
   FlatList,
+  Platform,
   StyleSheet,
   Image,
   Text,
   View,
-  Linking
+  Linking,
 } from 'react-native';
-import { normalize } from 'react-native-elements';
+import {normalize} from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import globalStyles from '../../../style/globalStyles';
 import SearchBar from '../../../components/SearchBar';
 import color from '../../../style/color';
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style/fontSize';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 
-const ClientList = ({ onPress, usersData }) => {
+const ClientList = ({onPress, usersData, onDeletePress}) => {
+  const [flatListData, setFlatListData] = React.useState();
 
-  const onPresshandler = (number) => {
+  React.useEffect(() => {
+    setFlatListData(usersData);
+  }, [usersData]);
+
+  const onPresshandler = number => {
     let phoneNumber = '';
-    if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
-    else { phoneNumber = `telprompt:${number}`; }
+    if (Platform.OS === 'android') {
+      phoneNumber = `tel:${number}`;
+    } else {
+      phoneNumber = `telprompt:${number}`;
+    }
     Linking.openURL(phoneNumber);
-  }
+  };
 
-  const _renderItem = ({ item: client }) => (
+  const _renderItem = ({item: client}) => (
     <Pressable style={styles.profileService} onPress={() => onPress(client)}>
       <Image
         source={require('../../../assets/account.png')}
-        style={{ height: SCREEN_HEIGHT * 0.1, width: SCREEN_HEIGHT * 0.1 }}
+        style={{height: SCREEN_HEIGHT * 0.1, width: SCREEN_HEIGHT * 0.1}}
       />
-      <Text style={{ color: color.primary, fontSize: 16, fontWeight: 'bold' }}>
+      <MaterialCommunityIcons
+        name="delete"
+        color="black"
+        onPress={() => onDeletePress(client)}
+        size={SCREEN_HEIGHT * 0.03}
+        style={{marginTop: SCREEN_HEIGHT * 0.02}}
+      />
+      <Text style={{color: color.primary, fontSize: 16, fontWeight: 'bold'}}>
         {client?.first_name}
       </Text>
       <Text
@@ -47,9 +63,9 @@ const ClientList = ({ onPress, usersData }) => {
       </Text>
       {!!client?.phone && (
         <Pressable onPress={() => onPresshandler(client?.phone)}>
-          <View style={[styles.btn, { backgroundColor: color.successText }]}>
+          <View style={[styles.btn, {backgroundColor: color.successText}]}>
             <FontAwesome name="phone" style={styles.btnIcon} />
-            <Text style={styles.btnText} >Contact</Text>
+            <Text style={styles.btnText}>Contact</Text>
           </View>
         </Pressable>
       )}
@@ -72,24 +88,11 @@ const ClientList = ({ onPress, usersData }) => {
           <SearchBar />
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          marginHorizontal: SCREEN_WIDTH * 0.025,
-          marginVertical: SCREEN_HEIGHT * 0.025,
-        }}>
-        <TouchableWithoutFeedback>
-          <View style={[styles.btn, { backgroundColor: color.grey }]}>
-            <FontAwesome name="trash-o" style={styles.btnIcon} />
-            <Text style={styles.btnText}>Delete Client</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
 
       <FlatList
-        data={usersData}
+        data={flatListData}
         renderItem={_renderItem}
+        extraData={flatListData}
         keyExtractor={item => item._id}
         numColumns={2}
         showsVerticalScrollIndicator={false}

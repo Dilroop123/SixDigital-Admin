@@ -36,7 +36,6 @@ const DrawerHeader = ({navigation, onPress, onNotificationPress}) => {
 export default DrawerHeader;
 const styles = StyleSheet.create({
   headerContainer: {
-    marginTop: SCREEN_HEIGHT * 0.04,
     flexDirection: 'row',
     alignItems: 'center',
   },

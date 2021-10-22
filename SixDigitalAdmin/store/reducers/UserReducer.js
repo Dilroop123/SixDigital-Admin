@@ -1,4 +1,4 @@
-import {SET_USERS} from '../actions/UserAction';
+import {SET_USERS, DELETE_CLIENT} from '../actions/UserAction';
 const initialState = {
   UsersData: [],
 };
@@ -9,6 +9,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         UsersData: action.userdata,
+      };
+    case DELETE_CLIENT:
+      return {
+        ...state,
       };
   }
   return state;

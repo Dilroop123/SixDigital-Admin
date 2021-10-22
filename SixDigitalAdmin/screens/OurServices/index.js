@@ -1,15 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { DrawerActions } from '@react-navigation/native';
-import { Text, Pressable, StyleSheet, Image, View, FlatList } from 'react-native';
+import {DrawerActions} from '@react-navigation/native';
+import {Text, Pressable, StyleSheet, Image, View, FlatList} from 'react-native';
 import color from '../../style/color';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as ServiceAction from '../..//store/actions/ServiceAction';
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../style/fontSize';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../style/fontSize';
 import DrawerHeader from '../../components/DrawerHeader';
 import Header from './Header';
 
-const OurServices = ({ navigation, onPress }) => {
+const OurServices = ({navigation, onPress}) => {
   const dispatch = useDispatch();
   const serviceData = useSelector(state => state.service.ServiceData);
 
@@ -19,7 +19,7 @@ const OurServices = ({ navigation, onPress }) => {
     });
   }, [dispatch, navigation]);
 
-  const _renderItem = ({ item: service }) => (
+  const _renderItem = ({item: service}) => (
     <Pressable style={styles.services}>
       <View style={styles.serviceIconArea}>
         <Image
@@ -27,7 +27,7 @@ const OurServices = ({ navigation, onPress }) => {
             height: SCREEN_HEIGHT * 0.1,
             width: SCREEN_HEIGHT * 0.1,
           }}
-          source={{ uri: service?.image?.publicUrl }}
+          source={{uri: service?.image?.publicUrl}}
         />
       </View>
 
@@ -39,7 +39,7 @@ const OurServices = ({ navigation, onPress }) => {
       <DrawerHeader
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       />
-      <View style={{ marginTop: SCREEN_HEIGHT * 0.02 }}>
+      <View style={{marginTop: SCREEN_HEIGHT * 0.02}}>
         <Header
           leftLabel="Our Services"
           rightLabel="Add New Service"
@@ -53,7 +53,7 @@ const OurServices = ({ navigation, onPress }) => {
           keyExtractor={item => item._id}
           numColumns={3}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ marginTop: SCREEN_HEIGHT * 0.03 }}
+          contentContainerStyle={{marginTop: SCREEN_HEIGHT * 0.03}}
         />
       </View>
     </View>

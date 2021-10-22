@@ -23,7 +23,11 @@ const CreateProject = ({navigation, route}) => {
     <View style={styles.container}>
       <View style={{flex: 1, margin: SCREEN_WIDTH * 0.05}}>
         <AppHeader onPress={() => navigation.pop()} />
-        <RequestForm serviceData={serviceData?.data} userId={userId} />
+        <RequestForm
+          serviceData={serviceData?.data}
+          userId={userId}
+          onpress={() => navigation.pop()}
+        />
       </View>
     </View>
   );

@@ -9,10 +9,10 @@ import {
   View,
   FlatList,
 } from 'react-native';
+import Toast from 'react-native-simple-toast';
 import DocumentPicker from 'react-native-document-picker';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as FileAction from '../../../store/actions/FileAction';
-import Toast from '../../../components/Toast';
 import color from '../../../style/color';
 import Button from './Button';
 import FileItem from '../component/FileItem';
@@ -21,8 +21,7 @@ import FileContext from '../../../context/FileContext';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const Upload = ({ navigation }) => {
-  const [isShowToast, setIsShowToast] = React.useState(false);
+const Upload = ({navigation}) => {
   const fileDAta = useSelector(state => state.file.FileData);
   const dispatch = useDispatch();
   const userId = React.useContext(FileContext);
@@ -41,21 +40,15 @@ const Upload = ({ navigation }) => {
   const uploadDocument = async () => {
     // Pick a single file
 
-    setIsShowToast(false);
     try {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
 
-      setIsShowToast(true);
+      Toast.show('Upload Success');
 
       await dispatch(
-        FileAction.sendFile(
-          userId,
-          res,
-          'This is the test',
-          'adminUploaded',
-        ),
+        FileAction.sendFile(userId, res, 'This is the test', 'adminUploaded'),
       );
       await dispatch(FileAction.getFiles(userId));
     } catch (err) {
@@ -67,13 +60,11 @@ const Upload = ({ navigation }) => {
     }
   };
 
-  const _renderItem = ({ item: document }) => <FileItem document={document} />;
+  const _renderItem = ({item: document}) => <FileItem document={document} />;
 
   return (
     <View style={styles.container}>
-      {isShowToast && <Toast message="upload success" />}
-
-      <Text style={{ color: 'gray' }}>
+      <Text style={{color: 'gray'}}>
         Upload your documents you want to share with us
       </Text>
 
@@ -98,8 +89,8 @@ const Upload = ({ navigation }) => {
         renderItem={_renderItem}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item._id}
-        contentContainerStyle={{ marginTop: SCREEN_HEIGHT * 0.05 }}
-        ListFooterComponent={<View style={{ height: SCREEN_HEIGHT * 0.3 }} />}
+        contentContainerStyle={{marginTop: SCREEN_HEIGHT * 0.05}}
+        ListFooterComponent={<View style={{height: SCREEN_HEIGHT * 0.3}} />}
       />
     </View>
   );

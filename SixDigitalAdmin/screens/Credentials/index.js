@@ -6,6 +6,8 @@ import * as CreditAction from '../../store/actions/CreditAction';
 import {useSelector, useDispatch} from 'react-redux';
 import SubmittedList from './components/SubmittedList';
 import color from '../../style/color';
+import AppHeader from '../../components/AppHeader';
+import {SCREEN_HEIGHT} from '../../style/fontSize';
 
 const Credentials = ({navigation, route}) => {
   const savedCrdentials = useSelector(state => state.card.SavedCrdentials);
@@ -22,7 +24,13 @@ const Credentials = ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontWeight: 'bold', color: color.primary}}>
+      <AppHeader onPress={() => navigation.pop()} />
+      <Text
+        style={{
+          fontWeight: 'bold',
+          color: color.primary,
+          marginTop: SCREEN_HEIGHT * 0.04,
+        }}>
         Submitted Credentials
       </Text>
       <SubmittedList savedCrdentials={savedCrdentials?.data} />

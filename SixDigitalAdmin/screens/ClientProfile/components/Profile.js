@@ -3,15 +3,15 @@ import React from 'react';
 
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import color from '../../../style/color';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 import ProfileCard from './ProfileCard';
 
-const Card = ({title, onPress}) => (
+const Card = ({title, onPress, iconName}) => (
   <Pressable style={styles.profileService} onPress={onPress}>
-    <FontAwesome5 name="file-invoice-dollar" style={styles.serviceIcon} />
+    <FontAwesome name={iconName} style={styles.serviceIcon} />
     <Text style={styles.title}>{title}</Text>
   </Pressable>
 );
@@ -24,28 +24,34 @@ const Profile = ({client, onPress}) => {
         <Card
           title="Create Project"
           onPress={() => onPress('CreateProject', client?._id)}
+          iconName="edit"
         />
         <Card
           title="My Projects"
           onPress={() => onPress('MyProjects', client?._id)}
+          iconName="briefcase"
         />
         <Card
           title="Create Offer"
           onPress={() => onPress('Offer', client?._id)}
+          iconName="ge"
         />
       </View>
       <View style={{flexDirection: 'row'}}>
         <Card
           title="Credentials"
           onPress={() => onPress('Credentials', client?._id)}
+          iconName="puzzle-piece"
         />
         <Card
           title="Files/Reports"
           onPress={() => onPress('File', client?._id)}
+          iconName="file-text-o"
         />
         <Card
           title="Invoices"
           onPress={() => onPress('Invoice', client?._id)}
+          iconName="file-zip-o"
         />
       </View>
     </View>

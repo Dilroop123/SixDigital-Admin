@@ -9,18 +9,18 @@ import {
   View,
   KeyboardAvoidingView,
 } from 'react-native';
-import { normalize } from 'react-native-elements';
+import {normalize} from 'react-native-elements';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DocumentPicker from 'react-native-document-picker';
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import TextField from '../../../components/TextField';
 import * as ProfileAction from '../../../store/actions/ProfileAction';
 import color from '../../../style/color';
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../../style/fontSize';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../../style/fontSize';
 import ProjectCard from './ProjectCard';
-import { Dropdown } from './Dropdown';
+import {Dropdown} from './Dropdown';
 
-const RequestForm = ({ serviceData, userId }) => {
+const RequestForm = ({serviceData, userId, onpress}) => {
   const options = serviceData?.map(service => ({
     key: service?._id,
     text: service?.name,
@@ -69,7 +69,7 @@ const RequestForm = ({ serviceData, userId }) => {
         status,
       ),
     );
-    // onpress()
+    onpress();
   };
 
   return (
@@ -78,7 +78,7 @@ const RequestForm = ({ serviceData, userId }) => {
       // enabled={enableShift}
       style={styles.container}>
       <View>
-        <View style={{ marginTop: SCREEN_HEIGHT * 0.01 }}>
+        <View style={{marginTop: SCREEN_HEIGHT * 0.01}}>
           <ProjectCard
             projectName={projectName}
             charges={charges}
@@ -89,7 +89,7 @@ const RequestForm = ({ serviceData, userId }) => {
         <Text style={styles.pageTitle}>Create a Project</Text>
 
         <View style={styles.requestServiceContainer}>
-          <View style={{ marginVertical: SCREEN_HEIGHT * 0.015 }}>
+          <View style={{marginVertical: SCREEN_HEIGHT * 0.015}}>
             <Dropdown
               options={options}
               onChange={setServiceId}
@@ -136,10 +136,10 @@ const RequestForm = ({ serviceData, userId }) => {
                 <Ionicons
                   name="ios-cloud-upload-outline"
                   color={color.white}
-                  style={{ marginRight: SCREEN_WIDTH * 0.03 }}
+                  style={{marginRight: SCREEN_WIDTH * 0.03}}
                   size={SCREEN_HEIGHT * 0.03}
                 />
-                <Text style={{ color: color.white }}>Upload Image</Text>
+                <Text style={{color: color.white}}>Upload Image</Text>
               </View>
             </Pressable>
           </View>
